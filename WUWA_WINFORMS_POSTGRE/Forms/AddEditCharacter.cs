@@ -12,9 +12,14 @@ namespace WUWA_WINFORMS_POSTGRE.Forms
 {
     public partial class AddEditCharacter : Form
     {
-        public AddEditCharacter()
+        public int Id { get; set; }
+        public string Photo { get; set; }
+        public AddEditCharacter(int id, string photo)
         {
             InitializeComponent();
+            Id = id;
+            Photo = photo;
+
         }
     }
 }

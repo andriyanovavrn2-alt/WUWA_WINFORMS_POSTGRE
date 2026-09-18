@@ -1,41 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WUWA_WINFORMS_POSTGRE;
+using WUWA_WINFORMS_POSTGRE.Models;
 
 namespace WUWA_CHARACTER_OOP.Models
 {
-    abstract class Character
+    public class Character
     {
+        public int CharacterId { get; set; }
         public string Name { get; set; }
-        public int Level { get; set; }
-        public string Weapon { get; set; }
-        public string Element { get; set; }
-        public double HP { get; set; }
-        public double ATK { get; set; }
-        public double DEF { get; set; }
-        public double CritRate { get; set; }
-        public double CritDamage { get; set; }
-        public string Role { get; set; }
-        public Character(string name, string weapon, string element, double hp, double atk, double def, double crit_rate, double crit_damage, string role)
-        {
-            Name = name;
-            Weapon = weapon;
-            Element = element;
-            HP = hp;
-            ATK = atk;
-            DEF = def;
-            CritRate = crit_rate;
-            CritDamage = crit_damage;
-            Role = role;
-        }
-        public void LevelUp()
-        {
-            Level += 1;
-        }
-        public abstract double GetDamage();
-        public virtual void PrintStats()
-        {
-            Console.WriteLine($"Имя: {Name}\nОружие: {Weapon}\nЭлемент: {Element}\nХП: {HP}\nАТК: {ATK}\nЗащита: {DEF}\nКрит Шанс: {CritRate}\nКрит Урон: {CritDamage}\nРоль: {Role}");
-        }
+        public int WeaponId { get; set; }
+        public Weapon Weapon { get; set; }
+        public int ElementId { get; set; }
+        public Element Element { get; set; }
+        public int RarityId { get; set; }
+        public Rarity Rarity { get; set; }
+        public int RolesId { get; set; }
+        public Role Role { get; set; }
+        public string Photo { get; set; }
+
     }
 }
