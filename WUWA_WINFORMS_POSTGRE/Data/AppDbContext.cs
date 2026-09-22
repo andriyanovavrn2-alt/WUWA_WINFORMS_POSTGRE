@@ -11,11 +11,10 @@ namespace WUWA_WINFORMS_POSTGRE
 {
     public class AppDbContext : DbContext
     {
-        private const string ConnectionString = @"Host = localhost;Port=5433;Username=postgres;Password=123;Database=Wuwa_db";
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            optionsBuilder.UseNpgsql(ConnectionString);
         }
+
         public DbSet<Character> Character { get; set; }
         public DbSet<Weapon> Weapon { get; set; }
         public DbSet<Element> Elements { get; set; }

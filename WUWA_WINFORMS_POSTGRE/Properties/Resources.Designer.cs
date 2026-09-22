@@ -59,15 +59,5 @@ namespace WUWA_WINFORMS_POSTGRE.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap fb5c81ed3a220004b71069645f112867 {
-            get {
-                object obj = ResourceManager.GetObject("fb5c81ed3a220004b71069645f112867", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

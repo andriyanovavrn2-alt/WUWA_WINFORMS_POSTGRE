@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,14 +9,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WUWA_WINFORMS_POSTGRE.Forms;
 
 namespace WUWA_WINFORMS_POSTGRE
 {
     public partial class MainForm : Form
     {
+
+
         public MainForm()
         {
             InitializeComponent();
+        }
+
+
+        private void CharactersShow_Click(object sender, EventArgs e)
+        {
+            using (var db = AppDbContextFactory.Create())
+            {
+                flowLayoutPanel1.Controls.Clear();
+                var characters = db.Character
+                    .AsNoTracking() // только для чтения
+                    .ToList();
+                foreach(var character in characters)
+                {
+                    var card = new CharacterControl();
+                    card.IdChar = character.CharacterId;
+                    card.Picture = character.Photo;
+                    card.SetChar();
+                    flowLayoutPanel1.Controls.Add(card);
+                }
+
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -38,16 +63,6 @@ namespace WUWA_WINFORMS_POSTGRE
 
         }
 
-        private void CharactersShow_Click(object sender, EventArgs e)
-        {
-            using (var db = new AppDbContext())
-            {
-                foreach(var character in db.Character.AsNoTracking().Include(character => character.Weapon).Include(character => character.Role).Include(character => character.Element).Include(character => character.Rarity))
-                {
-
-                }
-
-            }
-        }
+        
     }
 }
